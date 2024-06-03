@@ -1,66 +1,103 @@
 #include <iostream>
-#include <ctime>
 
 using namespace std;
 
 void task_1() {
-    srand(static_cast<unsigned int>(time(nullptr)));
-    int number = rand() % 501 - 1;
-    cout << "I guessed a number from 1 to 500, try to guess it" << endl;
-    int input;
-    do {
-        cout << "Probably this number - ";
-        cin >> input;
-        if(input > number) {
-            cout << "My number is less" << endl;
-        } else if(input < number) {
-            cout << "My number is more" << endl;
-        } else {
-            cout << "You guessed it!" << endl;
+    int sum = 0;
+    for(int i = 100; i <= 999; i++) {
+        int a = i / 100;
+        int b = (i / 10) % 10;
+        int c = i % 10;
+        if(a == b || a == c || b == c) {
+            sum += 1;
         }
-    }while(input != number);
+    }
+    cout << sum << endl;
 }
 
 void task_2() {
-    int number, input;
-    do {
-        cout << "#---------------------- Сurrency converter ----------------------#" << endl;
-        cout << "#                       1. USD to UA                             #" << endl;
-        cout << "#                       2. EUR to UA                             #" << endl;
-        cout << "#                       3. USD to EUR                            #" << endl;
-        cout << "#                       0. Exit                                  #" << endl;
-        cout << "#----------------------------------------------------------------#" << endl;
-        cout << "Enter number: ";
-        cin >> number;
-        switch (number) {
-            case 1: {
-                cout << "Enter number of USD: ";
-                cin >> input;
-                cout << "It`s " << input * 40 << " UA" << endl;
-                break;
-            }
-            case 2: {
-                cout << "Enter number of EUR: ";
-                cin >> input;
-                cout << "It`s " << input * 43<< " UA" << endl;
-                break;
-            }
-            case 3: {
-                cout << "Enter number of USD: ";
-                cin >> input;
-                cout << "It`s " << input * 0.92 << " EUR" << endl;
-                break;
-            }
-            default: {
-                cout << "Your number is out of range!" << endl;
-                break;
-            }
+    int sum = 0;
+    for(int i = 100; i <= 999; i++) {
+        int a = i / 100;
+        int b = (i / 10) % 10;
+        int c = i % 10;
+        if(a != b && a != c && b != c) {
+            sum += 1;
         }
-    }while (number != 0);
+    }
+    cout << sum << endl;
+}
+
+void task_3() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    string num = to_string(number);
+    string new_num = "";
+
+    for (char c : num) {
+        if (c != '3' && c != '6') {
+            new_num += c;
+        }
+
+    }
+
+    cout << "Number after removing: " << new_num << endl;
+}
+
+void task_4() {
+    int input_number, num_b = 1;
+    cout << "Enter a number: ";
+    cin >> input_number;
+
+    while(num_b != input_number) {
+        if(input_number % (num_b * num_b) == 0 && input_number % (num_b * num_b * num_b) != 0) {
+            cout << num_b << " ";
+        }
+        num_b += 1;
+    }
+}
+
+void task_5() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+    int sum = 0;
+    string num = to_string(number);
+    for(int i = 0; i < num.length(); i++) {
+        sum += num[i] - '0';
+    }
+    sum * sum * sum == number * number ? cout << "Yes" : cout << "No";
+}
+
+void task_6() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+    int a = 1;
+    while(a <= number) {
+        if( number % a == 0) {
+            cout << a << " ";
+        }
+        a++;
+    }
+}
+
+void task_7() {
+    int num_1, num_2;
+    cout << "Enter two numbers: ";
+    cin >> num_1 >> num_2;
+    int a = 1;
+    while(a <= num_1 && a <= num_2) {
+        if(num_1 % a == 0 && num_2 % a == 0) {
+            cout << a << " ";
+        }
+        a++;
+    }
 }
 
 int main() {
-    task_2();
-
+    task_7();
     return 0;
 }
